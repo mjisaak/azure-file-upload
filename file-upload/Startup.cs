@@ -42,7 +42,7 @@ namespace file_upload
                 app.UseHsts();
             }
 
-            if (env.IsDevelopment())
+            if (!env.IsDevelopment())
             {
                 app.UseHttpsRedirection();
             }
