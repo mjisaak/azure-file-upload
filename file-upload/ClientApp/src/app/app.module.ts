@@ -10,6 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import {FileUploadModule} from 'primeng/fileupload';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'file-upload', component: FileUploadComponent },
-    ])
+    ]),
+    FileUploadModule
   ],
   providers: [],
   bootstrap: [AppComponent]
