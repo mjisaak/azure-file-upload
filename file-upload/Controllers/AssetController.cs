@@ -15,8 +15,5 @@ namespace file_upload.Controllers
         {
             return Ok();
         }
-
-
-
     }
 }
