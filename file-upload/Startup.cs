@@ -22,6 +22,8 @@ namespace file_upload
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+             services.AddSingleton<IConfiguration>(Configuration);
+
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

@@ -24,7 +24,7 @@ export class FileUploadComponent implements OnInit {
     const file: File = fileList[0];
     const formData: FormData = new FormData();
 
-    formData.append('file', file, file.name);
+    formData.append('asset', file, file.name);
     this.http.post(this.baseUrl + 'api/Asset', formData).subscribe();
 
   }
