@@ -1,32 +1,18 @@
-import { Component, OnInit, Inject } from '@angular/core';
-
-import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.css']
 })
-export class FileUploadComponent implements OnInit {
+export class FileUploadComponent  {
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
-    // http.get<WeatherForecast[]>(baseUrl + 'api/SampleData/WeatherForecasts').subscribe(result => {
-    //   this.forecasts = result;
-    // }, error => console.error(error));
-  }
-  ngOnInit() {
+  private fileUploaded: boolean;
+
+  constructor() {
   }
 
   uploadFile(event) {
-
-    const fileList: FileList = event.files;
-
-    const file: File = fileList[0];
-    const formData: FormData = new FormData();
-
-    formData.append('asset', file, file.name);
-    this.http.post(this.baseUrl + 'api/Asset', formData).subscribe();
-
+    this.fileUploaded = true;
   }
-
 }

@@ -1,5 +1,18 @@
 <h1>File Upload</h1>
 
-<p>This is a simple example of an Angular component.</p>
+<p>This is a simple example to upload a file to Azure Blob Storage using a ASP.NET Core based middleware.</p>
 
-<p-fileUpload name="myfile" chooseLabel="Add File" customUpload="true" mode="basic" auto="true" (uploadHandler)="uploadFile($event)"></p-fileUpload>
+<div *ngIf="fileUploaded">
+    <h3 class="text-success font-weight-bold">
+        File successfully uploaded
+    </h3>
+
+    <p>
+        Refresh the page to upload a new file.
+    </p>
+</div>
+
+<div *ngIf="!fileUploaded">
+    <p-fileUpload #fubauto mode="basic" name="asset" url="/api/Asset" maxFileSize="1000000" (onUpload)="uploadFile($event)" auto="true"
+        chooseLabel="Browse"></p-fileUpload>
+</div>
