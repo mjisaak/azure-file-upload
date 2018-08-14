@@ -9,8 +9,6 @@ using Microsoft.WindowsAzure.Storage;
 
 namespace file_upload.Controllers
 {
-
-
     [Route("api/[controller]")]
     public class AssetController : Controller
     {
@@ -30,12 +28,13 @@ namespace file_upload.Controllers
                 var container = client.GetContainerReference("fileupload");
                 await container.CreateIfNotExistsAsync();
 
-                await container.GetBlockBlobReference(asset.FileName)
-                    .UploadFromStreamAsync(asset.OpenReadStream());
+                var blob = await container.GetBlobReferenceFromServerAsync(asset.FileName);
+                await blob.UploadFromStreamAsync(asset.OpenReadStream());
 
+                return Ok(blob.Uri);
             }
-            return Ok();
 
+            return StatusCode(StatusCodes.Status500InternalServerError);
         }
     }
 }
